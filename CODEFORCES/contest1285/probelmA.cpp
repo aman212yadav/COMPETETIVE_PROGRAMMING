@@ -1,4 +1,4 @@
-// problem link - https://codeforces.com/contest/1285/problem/A
+ // problem link - https://codeforces.com/contest/1285/problem/A
 #include<bits/stdc++.h>
 using namespace std;
 int main(){
