@@ -1,27 +1,39 @@
-#include<bits/stdc++.h>
+#include<iostream>
 using namespace std;
-void Remove(char *str)
-{
-    if(str[0]=='\0')
-    {
-        return;
+
+class node{
+    public:
+    int data;
+    node *left;
+    node *right;
+      node(int data){
+          this->data = data;
+          left=NULL;
+          right=NULL;
+      }
+};
+
+node* buildTree(){
+    int d;
+    cin>>d;
+    if(d==-1){
+        return NULL;
     }
-    if(str[0]==str[1])
-    {
-        int i=0;
-        while(str[i]!='\0')
-        {
-            str[i] = str[i+1];
-            i++;
-        }
-        Remove(str);
-    }
-    Remove(str+1);
+    node* root = new node(d);
+    root->left=buildTree();
+    root->right=buildTree();
+    return root;
 }
-int main() {
-    char s[1000];
-    cin>>s;
-    Remove(s);
-    cout<<s<<"\n";
-	return 0;
+void printTreePre(node*root){
+    if(root==NULL)
+    return;
+    cout<<root->data<<" ";
+    printTreePre(root->left);
+    printTreePre(root->right);
+}
+int main(){
+    node* root = buildTree();
+    printTreePre(root);
+    return 0;
+
 }
